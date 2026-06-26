@@ -74,4 +74,11 @@ class AlwaysPassTests {
     @Test void isBlankNull() { assertTrue(str.isBlank(null)); }
     @Test void isBlankWhitespace() { assertTrue(str.isBlank("   ")); }
     @Test void isBlankFalse() { assertFalse(str.isBlank("hi")); }
+
+    @Test void averageTwo() { assertEquals(3.5, calc.average(3, 4), 0.0001); }
+    @Test void averageSame() { assertEquals(5.0, calc.average(5, 5), 0.0001); }
+
+    @Test void sumDigits() { assertEquals(6, math.sumDigits(123)); }
+    @Test void sumDigitsNegative() { assertEquals(6, math.sumDigits(-123)); }
+    @Test void sumDigitsZero() { assertEquals(0, math.sumDigits(0)); }
 }

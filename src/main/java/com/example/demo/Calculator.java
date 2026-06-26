@@ -35,4 +35,6 @@ public class Calculator {
         if (n <= 0) throw new IllegalArgumentException("Argument must be positive");
         return Math.log(n);
     }
+
+    public double average(int a, int b) { return (a + b) / 2.0; }
 }

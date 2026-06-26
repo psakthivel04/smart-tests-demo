@@ -58,4 +58,11 @@ public class MathUtils {
         int root = (int) Math.sqrt(n);
         return root * root == n;
     }
+
+    public int sumDigits(int n) {
+        n = Math.abs(n);
+        int sum = 0;
+        while (n > 0) { sum += n % 10; n /= 10; }
+        return sum;
+    }
 }
