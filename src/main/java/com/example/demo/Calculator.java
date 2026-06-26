@@ -30,4 +30,9 @@ public class Calculator {
     public int max(int a, int b) { return Math.max(a, b); }
 
     public int min(int a, int b) { return Math.min(a, b); }
+
+    public double log(double n) {
+        if (n <= 0) throw new IllegalArgumentException("Argument must be positive");
+        return Math.log(n);
+    }
 }

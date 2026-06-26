@@ -49,4 +49,10 @@ public class StringUtils {
     public String trimAll(String s) {
         return s == null ? null : s.strip();
     }
+
+    public String truncate(String s, int maxLength) {
+        if (s == null) return null;
+        if (maxLength < 0) throw new IllegalArgumentException("maxLength must be non-negative");
+        return s.length() <= maxLength ? s : s.substring(0, maxLength);
+    }
 }

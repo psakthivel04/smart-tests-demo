@@ -58,4 +58,13 @@ public class CollectionUtils {
     public long count(List<?> list) {
         return list == null ? 0 : list.size();
     }
+
+    public double median(List<Integer> list) {
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("List is empty");
+        List<Integer> sorted = sort(list);
+        int mid = sorted.size() / 2;
+        return sorted.size() % 2 == 0
+                ? (sorted.get(mid - 1) + sorted.get(mid)) / 2.0
+                : sorted.get(mid);
+    }
 }

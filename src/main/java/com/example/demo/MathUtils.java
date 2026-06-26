@@ -47,6 +47,8 @@ public class MathUtils {
 
     public boolean isEven(int n) { return n % 2 == 0; }
 
+    public boolean isOdd(int n) { return n % 2 != 0; }
+
     public int clamp(int value, int min, int max) {
         return Math.max(min, Math.min(max, value));
     }
