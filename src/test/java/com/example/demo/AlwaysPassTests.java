@@ -45,4 +45,25 @@ class AlwaysPassTests {
     @Test void factorial() { assertEquals(120, math.factorial(5)); }
     @Test void sumList() { assertEquals(10, col.sum(List.of(1, 2, 3, 4))); }
     @Test void maxList() { assertEquals(9, col.max(List.of(3, 9, 1, 5))); }
+
+    // new methods from last commit
+    @Test void logOfE() { assertEquals(1.0, calc.log(Math.E), 0.0001); }
+    @Test void logOfOne() { assertEquals(0.0, calc.log(1.0), 0.0001); }
+    @Test void logNonPositiveThrows() { assertThrows(IllegalArgumentException.class, () -> calc.log(0)); }
+
+    @Test void medianOddSize() { assertEquals(3.0, col.median(List.of(1, 3, 5)), 0.0001); }
+    @Test void medianEvenSize() { assertEquals(3.5, col.median(List.of(1, 3, 4, 6)), 0.0001); }
+    @Test void medianEmptyThrows() { assertThrows(IllegalArgumentException.class, () -> col.median(List.of())); }
+
+    @Test void isOddTrue() { assertTrue(math.isOdd(7)); }
+    @Test void isOddFalse() { assertFalse(math.isOdd(4)); }
+
+    @Test void truncateShort() { assertEquals("hi", str.truncate("hi", 10)); }
+    @Test void truncateLong() { assertEquals("hel", str.truncate("hello", 3)); }
+    @Test void truncateNegativeLengthThrows() { assertThrows(IllegalArgumentException.class, () -> str.truncate("hi", -1)); }
+
+    @Test void isPerfectSquareTrue() { assertTrue(math.isPerfectSquare(25)); }
+    @Test void isPerfectSquareFalse() { assertFalse(math.isPerfectSquare(26)); }
+    @Test void isPerfectSquareZero() { assertTrue(math.isPerfectSquare(0)); }
+    @Test void isPerfectSquareNegative() { assertFalse(math.isPerfectSquare(-4)); }
 }

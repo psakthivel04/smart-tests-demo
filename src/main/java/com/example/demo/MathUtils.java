@@ -52,4 +52,10 @@ public class MathUtils {
     public int clamp(int value, int min, int max) {
         return Math.max(min, Math.min(max, value));
     }
+
+    public boolean isPerfectSquare(int n) {
+        if (n < 0) return false;
+        int root = (int) Math.sqrt(n);
+        return root * root == n;
+    }
 }
