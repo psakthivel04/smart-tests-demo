@@ -66,4 +66,12 @@ class AlwaysPassTests {
     @Test void isPerfectSquareFalse() { assertFalse(math.isPerfectSquare(26)); }
     @Test void isPerfectSquareZero() { assertTrue(math.isPerfectSquare(0)); }
     @Test void isPerfectSquareNegative() { assertFalse(math.isPerfectSquare(-4)); }
+
+    @Test void productList() { assertEquals(24L, col.product(List.of(1, 2, 3, 4))); }
+    @Test void productSingle() { assertEquals(7L, col.product(List.of(7))); }
+    @Test void productEmptyThrows() { assertThrows(IllegalArgumentException.class, () -> col.product(List.of())); }
+
+    @Test void isBlankNull() { assertTrue(str.isBlank(null)); }
+    @Test void isBlankWhitespace() { assertTrue(str.isBlank("   ")); }
+    @Test void isBlankFalse() { assertFalse(str.isBlank("hi")); }
 }

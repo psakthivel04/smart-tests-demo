@@ -50,6 +50,10 @@ public class StringUtils {
         return s == null ? null : s.strip();
     }
 
+    public boolean isBlank(String s) {
+        return s == null || s.isBlank();
+    }
+
     public String truncate(String s, int maxLength) {
         if (s == null) return null;
         if (maxLength < 0) throw new IllegalArgumentException("maxLength must be non-negative");

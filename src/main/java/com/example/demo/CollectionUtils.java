@@ -59,6 +59,11 @@ public class CollectionUtils {
         return list == null ? 0 : list.size();
     }
 
+    public long product(List<Integer> list) {
+        if (list == null || list.isEmpty()) throw new IllegalArgumentException("List is empty");
+        return list.stream().mapToLong(Integer::longValue).reduce(1L, (a, b) -> a * b);
+    }
+
     public double median(List<Integer> list) {
         if (list == null || list.isEmpty()) throw new IllegalArgumentException("List is empty");
         List<Integer> sorted = sort(list);
