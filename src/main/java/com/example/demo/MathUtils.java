@@ -65,4 +65,24 @@ public class MathUtils {
         while (n > 0) { sum += n % 10; n /= 10; }
         return sum;
     }
+
+    public boolean isPowerOfTwo(int n) {
+        return n > 0 && (n & (n - 1)) == 0;
+    }
+
+    public int digitCount(int n) {
+        if (n == 0) return 1;
+        return (int) Math.log10(Math.abs(n)) + 1;
+    }
+
+    public int reverseNumber(int n) {
+        boolean negative = n < 0;
+        n = Math.abs(n);
+        int reversed = 0;
+        while (n > 0) {
+            reversed = reversed * 10 + n % 10;
+            n /= 10;
+        }
+        return negative ? -reversed : reversed;
+    }
 }

@@ -72,4 +72,19 @@ public class CollectionUtils {
                 ? (sorted.get(mid - 1) + sorted.get(mid)) / 2.0
                 : sorted.get(mid);
     }
+
+    public boolean allPositive(List<Integer> list) {
+        if (list == null || list.isEmpty()) return false;
+        return list.stream().allMatch(n -> n > 0);
+    }
+
+    public List<Integer> filterPositive(List<Integer> list) {
+        if (list == null) return null;
+        return list.stream().filter(n -> n > 0).collect(Collectors.toList());
+    }
+
+    public int frequency(List<Integer> list, int value) {
+        if (list == null) return 0;
+        return (int) list.stream().filter(n -> n == value).count();
+    }
 }

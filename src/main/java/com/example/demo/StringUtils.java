@@ -59,4 +59,21 @@ public class StringUtils {
         if (maxLength < 0) throw new IllegalArgumentException("maxLength must be non-negative");
         return s.length() <= maxLength ? s : s.substring(0, maxLength);
     }
+
+    public String removeSpaces(String s) {
+        if (s == null) return null;
+        return s.replaceAll("\\s+", "");
+    }
+
+    public boolean startsWithIgnoreCase(String s, String prefix) {
+        if (s == null || prefix == null) return false;
+        return s.toLowerCase().startsWith(prefix.toLowerCase());
+    }
+
+    public int countOccurrences(String s, char c) {
+        if (s == null) return 0;
+        int count = 0;
+        for (char ch : s.toCharArray()) if (ch == c) count++;
+        return count;
+    }
 }
