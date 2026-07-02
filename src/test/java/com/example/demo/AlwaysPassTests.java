@@ -81,4 +81,31 @@ class AlwaysPassTests {
     @Test void sumDigits() { assertEquals(6, math.sumDigits(123)); }
     @Test void sumDigitsNegative() { assertEquals(6, math.sumDigits(-123)); }
     @Test void sumDigitsZero() { assertEquals(0, math.sumDigits(0)); }
+
+    // MathUtils new methods
+    @Test void isPowerOfTwoTrue() { assertTrue(math.isPowerOfTwo(16)); }
+    @Test void isPowerOfTwoFalse() { assertFalse(math.isPowerOfTwo(6)); }
+    @Test void isPowerOfTwoOne() { assertTrue(math.isPowerOfTwo(1)); }
+    @Test void isPowerOfTwoZero() { assertFalse(math.isPowerOfTwo(0)); }
+    @Test void digitCountSingle() { assertEquals(1, math.digitCount(7)); }
+    @Test void digitCountMulti() { assertEquals(4, math.digitCount(1234)); }
+    @Test void digitCountZero() { assertEquals(1, math.digitCount(0)); }
+    @Test void reverseNumberPositive() { assertEquals(321, math.reverseNumber(123)); }
+    @Test void reverseNumberNegative() { assertEquals(-321, math.reverseNumber(-123)); }
+
+    // StringUtils new methods
+    @Test void removeSpaces() { assertEquals("hello", str.removeSpaces("he llo")); }
+    @Test void removeSpacesNull() { assertNull(str.removeSpaces(null)); }
+    @Test void startsWithIgnoreCaseTrue() { assertTrue(str.startsWithIgnoreCase("Hello", "he")); }
+    @Test void startsWithIgnoreCaseFalse() { assertFalse(str.startsWithIgnoreCase("Hello", "lo")); }
+    @Test void countOccurrences() { assertEquals(3, str.countOccurrences("banana", 'a')); }
+    @Test void countOccurrencesNone() { assertEquals(0, str.countOccurrences("hello", 'z')); }
+
+    // CollectionUtils new methods
+    @Test void allPositiveTrue() { assertTrue(col.allPositive(List.of(1, 2, 3))); }
+    @Test void allPositiveFalse() { assertFalse(col.allPositive(List.of(1, -2, 3))); }
+    @Test void allPositiveEmpty() { assertFalse(col.allPositive(List.of())); }
+    @Test void filterPositive() { assertEquals(List.of(1, 3), col.filterPositive(List.of(1, -2, 3))); }
+    @Test void frequencyFound() { assertEquals(2, col.frequency(List.of(1, 2, 1, 3), 1)); }
+    @Test void frequencyNotFound() { assertEquals(0, col.frequency(List.of(1, 2, 3), 9)); }
 }
