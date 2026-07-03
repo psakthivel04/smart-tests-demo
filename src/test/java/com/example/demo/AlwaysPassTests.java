@@ -108,4 +108,9 @@ class AlwaysPassTests {
     @Test void filterPositive() { assertEquals(List.of(1, 3), col.filterPositive(List.of(1, -2, 3))); }
     @Test void frequencyFound() { assertEquals(2, col.frequency(List.of(1, 2, 1, 3), 1)); }
     @Test void frequencyNotFound() { assertEquals(0, col.frequency(List.of(1, 2, 3), 9)); }
+
+    // Calculator.roundToDecimalPlaces
+    @Test void roundToTwoPlaces() { assertEquals(3.14, calc.roundToDecimalPlaces(3.14159, 2), 0.0001); }
+    @Test void roundToZeroPlaces() { assertEquals(3.0, calc.roundToDecimalPlaces(3.7, 0), 0.0001); }
+    @Test void roundNegativePlacesThrows() { assertThrows(IllegalArgumentException.class, () -> calc.roundToDecimalPlaces(1.5, -1)); }
 }

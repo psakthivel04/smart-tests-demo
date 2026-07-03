@@ -38,4 +38,10 @@ public class Calculator {
     }
 
     public double average(int a, int b) { return (a + b) / 2.0; }
+
+    public double roundToDecimalPlaces(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException("places must be non-negative");
+        double scale = Math.pow(10, places);
+        return Math.round(value * scale) / scale;
+    }
 }
