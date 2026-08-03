@@ -8,6 +8,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        shard: [1, 2, 3]
+
     steps:
       - uses: actions/checkout@v4
 
@@ -19,6 +24,17 @@ jobs:
 
       - name: Run tests
         run: mvn test
+
+      - name: Print runner details
+        if: always()
+        run: |
+          echo "Runner Name: $RUNNER_NAME"
+          echo "Runner OS: $RUNNER_OS"
+          echo "Runner Arch: $RUNNER_ARCH"
+          echo "Run ID: $GITHUB_RUN_ID"
+          echo "Run Attempt: $GITHUB_RUN_ATTEMPT"
+          echo "Job: $GITHUB_JOB"
+          echo "Matrix Shard: ${{ matrix.shard }}"
 
       - name: Store Test Results for Smart Tests
         if: always()
