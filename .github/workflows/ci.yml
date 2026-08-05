@@ -9,12 +9,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        shard: [1, 2, 3]
-
     steps:
       - uses: actions/checkout@v4
+
+      - name: Checkout smart-tests-cli
+        uses: actions/checkout@v4
+        with:
+          repository: cloudbees-oss/smart-tests-cli
+          ref: feature/AIENG-624-CLI-Add-from-github-actions-option-to-Subset-command
+          path: smart-tests-cli
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -22,8 +25,21 @@ jobs:
           java-version: "17"
           distribution: "temurin"
 
-      - name: Run tests
-        run: mvn test
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up smart-tests CLI
+        run: pip install ./smart-tests-cli
+
+      - name: Run Test with Smart Tests
+        env:
+          SMART_TESTS_TOKEN: "v1:cloudbees/urr:ce9315db7e3a04418d4dc1e8203788c"
+          SMART_TESTS_BASE_URL: "https://elusive-mustiness-gone.ngrok-free.dev/intake"
+        run: |
+          smart-tests subset --from-github-actions maven --target 80% src/test/java > subset.txt
+          mvn test -Dsurefire.includesFile=subset.txt
 
       - name: Print runner details
         if: always()
@@ -34,7 +50,6 @@ jobs:
           echo "Run ID: $GITHUB_RUN_ID"
           echo "Run Attempt: $GITHUB_RUN_ATTEMPT"
           echo "Job: $GITHUB_JOB"
-          echo "Matrix Shard: ${{ matrix.shard }}"
 
       - name: Store Test Results for Smart Tests
         if: always()
