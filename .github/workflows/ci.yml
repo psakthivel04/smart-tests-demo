@@ -35,7 +35,7 @@ jobs:
 
       - name: Run Test with Smart Tests
         env:
-          SMART_TESTS_TOKEN: "v1:cloudbees/urr:ce9315db7e3a04418d4dc1e8203788c"
+          SMART_TESTS_TOKEN: "v1:cloudbees/urr:28a1ce00db724460a605f89dba91273a"
           SMART_TESTS_BASE_URL: "https://elusive-mustiness-gone.ngrok-free.dev"
         run: |
           smart-tests subset --from-github-actions maven --target 80% src/test/java > subset.txt
