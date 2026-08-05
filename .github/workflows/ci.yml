@@ -36,9 +36,11 @@ jobs:
       - name: Run Test with Smart Tests
         env:
           SMART_TESTS_TOKEN: "v1:cloudbees/urr:ce9315db7e3a04418d4dc1e8203788c"
-          SMART_TESTS_BASE_URL: "https://elusive-mustiness-gone.ngrok-free.dev/intake"
+          SMART_TESTS_BASE_URL: "https://elusive-mustiness-gone.ngrok-free.dev"
         run: |
           smart-tests subset --from-github-actions maven --target 80% src/test/java > subset.txt
+          echo "=== Subset tests ==="
+          cat subset.txt
           mvn test -Dsurefire.includesFile=subset.txt
 
       - name: Print runner details
