@@ -13,7 +13,6 @@ public class Calculator {
         return a / b;
     }
 
-
     public double power(double base, double exponent) { return Math.pow(base, exponent); }
 
     public double sqrt(double n) {
