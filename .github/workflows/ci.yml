@@ -42,6 +42,7 @@ jobs:
         env:
           SMART_TESTS_TOKEN: "v1:cloudbees/urr:28a1ce00db724460a605f89dba91273a"
           SMART_TESTS_BASE_URL: "https://elusive-mustiness-gone.ngrok-free.dev"
+          SMART_TESTS_MATRIX: ${{ toJSON(matrix) }}
         run: |
           smart-tests subset --from-github-actions maven --target 80% --bin ${{ matrix.shard_index }}/3 src/test/java > subset.txt
           echo "=== Subset tests ==="
