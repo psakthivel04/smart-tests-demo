@@ -40,6 +40,7 @@ jobs:
         run: pip install ./smart-tests-cli
 
       - name: Run Test with Smart Tests
+        shell: bash
         env:
           SMART_TESTS_TOKEN: "v1:cloudbees/urr:28a1ce00db724460a605f89dba91273a"
           SMART_TESTS_BASE_URL: "https://elusive-mustiness-gone.ngrok-free.dev"
@@ -52,6 +53,7 @@ jobs:
 
       - name: Print runner details
         if: always()
+        shell: bash
         run: |
           echo "Runner Name: $RUNNER_NAME"
           echo "Runner OS: $RUNNER_OS"
