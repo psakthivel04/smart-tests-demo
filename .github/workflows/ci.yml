@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: cloudbees-oss/smart-tests-cli
-          ref: feature/AIENG-624-CLI-Add-from-github-actions-option-to-Subset-command
+          ref: feat/AIENG-625-flavors
           path: smart-tests-cli
 
       - name: Set up Java
