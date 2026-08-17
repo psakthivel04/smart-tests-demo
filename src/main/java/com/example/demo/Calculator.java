@@ -12,6 +12,7 @@ public class Calculator {
         if (b == 0) throw new ArithmeticException("Division by zero");
         return a / b;
     }
+
     public double power(double base, double exponent) { return Math.pow(base, exponent); }
 
     public double sqrt(double n) {
